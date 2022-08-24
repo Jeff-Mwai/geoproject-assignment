@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-input',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-input.component.css']
 })
 export class UserInputComponent implements OnInit {
-
-  constructor() { }
+  userData: any = {};
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-
+  userInfo(){
+    console.log(this.userData)
+    this.router.navigate(['/items'])
+  }
 }
