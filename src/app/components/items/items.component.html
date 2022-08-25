@@ -1,34 +1,8 @@
 <app-navbar></app-navbar>
-    
-      <form #itemsForm="ngForm" (ngSubmit)="itemInfo()" novalidate>
-        <div class="row d-flex justify-content-center">
-          <div class="my-form mt-3 w-50">
-              <div class="form-group">
-                <label for="item">Item</label>
-                <input type="text" id="item" required #item="ngModel" [class.is-invalid]="item.invalid && item.touched" class="form-control" item="item" name="item" [(ngModel)]="itemsData.item"/>
-                
-                <small class="text-danger" [class.d-none]="item.valid  || item.untouched">Item is required</small>
-              </div>
-              <div class="form-group">
-                <label for="quantity">Quantity</label>
-                <input type="number" id="quantity" required #quantity="ngModel" [class.is-invalid]="quantity.invalid && quantity.touched" class="form-control" name="quantity" [(ngModel)]="itemsData.quantity"/>
-                
-                <small class="text-danger" [class.d-none]="quantity.valid  || quantity.untouched">Quantity is required</small>
-              </div>
-              <div class="form-group">
-                  <label for="price">Price Per Unit</label>
-                  <input type="tel" id="price" required #price="ngModel" pattern="^\d$" [class.is-invalid]="price.invalid && price.touched" class="form-control" name="price" [(ngModel)]="itemsData.price"/>
-                  <div class="input-group-append">
-                    <span class="input-group-text">.00</span>
-                  </div>
-
-                  <small class="text-danger" [class.d-none]="price.valid  || price.untouched">Price is required</small>
-              </div>
-          
-              <button [disabled]="itemsForm.form.invalid" type="submit" class="btn btn-primary w-100">Next</button>
-              </div>
-      </div>
-      </form>
+    <div class="container">
+     
+    </div>
+  
    
 
 

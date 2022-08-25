@@ -1,40 +1,77 @@
 <app-navbar></app-navbar>
-      <form #userForm="ngForm" (ngSubmit)="userInfo()" novalidate>
+      <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
         <div class="row d-flex justify-content-center">
-          <div class="my-form mt-3 p-5 w-50">
+          <div class="my-form p-5 w-50">
               <div class="form-group">
                 <label for="address">Buyers Name</label>
-                <input type="text" id="name" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" class="form-control" name="name" [(ngModel)]="userData.name"/>
-                
-                <small class="text-danger" [class.d-none]="name.valid  || name.untouched">Name is required</small>
+                <input type="text" formControlName="name" required class="form-control" [class.is-invalid]="invoiceForm.get('name')!.invalid && invoiceForm.get('name')!.touched"/>
+                <small class="text-danger" [class.d-none]="invoiceForm.get('name')!.valid || invoiceForm.get('name')!.untouched">Name is required</small>
               </div>
               <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" id="address" required #address="ngModel" [class.is-invalid]="address.invalid && address.touched" class="form-control" name="address" [(ngModel)]="userData.address"/>
-                
-                <small class="text-danger" [class.d-none]="address.valid  || address.untouched">Address is required</small>
+                <input type="text" formControlName="address" required class="form-control" [class.is-invalid]="invoiceForm.get('address')!.invalid && invoiceForm.get('address')!.touched"/>
+                <small class="text-danger" [class.d-none]="invoiceForm.get('address')!.valid || invoiceForm.get('address')!.untouched">Address is required</small>
               </div>
               <div class="form-group">
                   <label for="phoneNumber">Phone Number</label>
-                  <input type="tel" id="phoneNumber" required #phoneNumber="ngModel" pattern="^\d{10}$" [class.is-invalid]="phoneNumber.invalid && phoneNumber.touched" class="form-control" name="phoneNumber" [(ngModel)]="userData.phoneNumber"/>
-
-                  <small class="text-danger" [class.d-none]="phoneNumber.valid  || phoneNumber.untouched">Phone Number is required and must be 10 digits</small>
+                  <input type="tel" formControlName="phoneNumber" required class="form-control" [class.is-invalid]="invoiceForm.get('phoneNumber')!.invalid && invoiceForm.get('phoneNumber')!.touched"/>
+                  <small class="text-danger" [class.d-none]="invoiceForm.get('phoneNumber')!.valid || invoiceForm.get('phoneNumber')!.untouched">Phone Number is required</small>
               </div>
               <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" id="email" required #email="ngModel" [class.is-invalid]="email.invalid && email.touched" class="form-control" cFormControl placeholder="Email" name="email" [(ngModel)]="userData.email"/>
-                  <small class="text-danger" [class.d-none]="email.valid  || email.untouched">Email is required</small>
+                  <input type="email" formControlName="email" required class="form-control" [class.is-invalid]="invoiceForm.get('email')!.invalid && invoiceForm.get('email')!.touched"/>
+                  <small class="text-danger" [class.d-none]="invoiceForm.get('email')!.valid || invoiceForm.get('email')!.untouched">Email is required</small>
               </div>
                <div class="form-group">
                 <label for="date">Payment Date</label>
-                <input type="date" id="date" required #date="ngModel" [class.is-invalid]="date.invalid && date.touched" class="form-control" name="date" [(ngModel)]="userData.date"/>
-                
-                <small class="text-danger" [class.d-none]="date.valid  || date.untouched">Date is required</small>
+                <input type="date" id="date" formControlName="date" required class="form-control" [class.is-invalid]="invoiceForm.get('date')!.invalid && invoiceForm.get('date')!.touched"/>
+                <small class="text-danger" [class.d-none]="invoiceForm.get('date')!.valid || invoiceForm.get('date')!.untouched">Date is required</small>
               </div>
-              <button [disabled]="userForm.form.invalid" type="submit" class="btn btn-primary w-100">Next</button>
+              <div class="form-group">
+
+
+                <button type="button" (click)="addItemsBtnClick()" class="btn btn-primary w-25">Add Invoice Items</button>
+                <div formArrayName="items" *ngFor="let item of invoiceForm.get('items').controls let i = index">
+                  <div [formGroupName]="i">
+                    <div class="row">
+                      <div class="col-4">
+                        <div class="form-group">
+                            <label for="item">Item</label>
+                            <input type="text"  formControlName="item" class="form-control"/>
+                         
+                          </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" formControlName="quantity" class="form-control">
+                        
+                          </div>
+                    </div>
+                    <div class="col-md-4">
+                             
+                      <div class="form-group">
+                        <label for="price">Price Per Unit</label>
+                        <input type="number" formControlName="price" class="form-control">
+                       
+                    </div>
+                    </div>  
+                    </div>
+          
+                  </div>
+                        
+                    
+            </div>
+              </div>
+
+              <button [disabled]="invoiceForm.form.invalid" type="submit" class="btn btn-primary w-100">Procced to Checkout</button>
               </div>
       </div>
       </form>
+
+      {{invoiceForm.value | json}}
    
 
 
+      <!-- <small class="text-danger" [class.d-none]="invoiceForm.get('price')!.valid || invoiceForm.get('price')!.untouched">price is required</small> -->
+   

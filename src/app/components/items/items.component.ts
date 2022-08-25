@@ -11,7 +11,5 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-itemInfo(){
-  console.log(this.itemsData)
-}
+
 }
