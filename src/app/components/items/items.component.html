@@ -1,5 +1,61 @@
-<app-navbar></app-navbar>
+
     <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h1 class="mb-5">INVOICE</h1>
+
+
+                <p>GEO-PROJECT</p>
+                <p>33843-00200</p>
+                <p>+254725107112</p>
+                <p class="mb-5">jeffmwai3@gmail.com</p>
+            
+            
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Bill To:</strong></p>
+                        <p>{{allData.name}}</p>
+                        <p>{{allData.address}}</p>
+                        <p>{{allData.phoneNumber}}</p>
+                        <p>{{allData.email}}</p>
+            
+                    </div>
+                    <div class="col-md-6">
+                        <p>Invoice Number: 999002</p>
+                        <p>Invoice Date: {{todaysDate| date}}</p>
+                        <p>Payment Due: {{allData.date}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table">
+                        <thead class="thead-light">
+                          <tr>
+                            
+                            <th scope="col">Item</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Amount</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of itemsData">
+                            
+                            <td>{{item.item}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.price}}</td>
+                            <td></td>
+                          </tr>
+                         
+                        </tbody>
+                      </table>
+                </div>
+            
+            </div>
+            
+            <div class="col-md-2"></div>
+        </div>
+    
      
     </div>
   

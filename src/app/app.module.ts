@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { UserInputComponent } from './components/user-input/user-input.component';
 import { ItemsComponent } from './components/items/items.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ApiCallsService } from './services/api-calls.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [
+    ApiCallsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

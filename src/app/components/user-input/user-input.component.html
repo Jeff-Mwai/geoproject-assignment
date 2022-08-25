@@ -30,7 +30,6 @@
               <div class="form-group">
 
 
-                <button type="button" (click)="addItemsBtnClick()" class="btn btn-primary w-25">Add Invoice Items</button>
                 <div formArrayName="items" *ngFor="let item of invoiceForm.get('items').controls let i = index">
                   <div [formGroupName]="i">
                     <div class="row">
@@ -62,14 +61,15 @@
                         
                     
             </div>
+            <button type="button" (click)="addItemsBtnClick()" class="btn btn-primary w-50">Add More Items</button>
               </div>
 
-              <button [disabled]="invoiceForm.form.invalid" type="submit" class="btn btn-primary w-100">Procced to Checkout</button>
+              <button type="submit" class="btn btn-primary w-100">Procced to Checkout</button>
               </div>
       </div>
       </form>
 
-      {{invoiceForm.value | json}}
+      
    
 
 

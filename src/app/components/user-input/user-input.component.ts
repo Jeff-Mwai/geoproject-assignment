@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
+import { ApiCallsService } from 'src/app/services/api-calls.service';
 
 @Component({
   selector: 'app-user-input',
@@ -11,11 +12,12 @@ export class UserInputComponent implements OnInit {
 
   userData: any = {};
   invoiceForm: any;
+  formData: any = [];
+  data: any;
+  myData: any;
   
 
-
-
-  constructor(private router:Router , private fb: FormBuilder) { }
+  constructor(private router:Router , private fb: FormBuilder, private service: ApiCallsService) { }
 
   ngOnInit(): void {
     this.invoiceForm = this.fb.group({
@@ -30,12 +32,14 @@ export class UserInputComponent implements OnInit {
       
       
     })
-    this.addItemsFormGroup();
+    // this.addItemsFormGroup();
+
+this.service.invoiceData.subscribe(res => {
+  this.data = res
+})
+
   }
-  userInfo(){
-    console.log(this.userData)
-    this.router.navigate(['/items'])
-  }
+ 
   addItemsBtnClick(): void{
     (<FormArray>this.invoiceForm.get('items')).push(this.addItemsFormGroup())
   }
@@ -48,7 +52,8 @@ export class UserInputComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.invoiceForm.value)
+    this.service.getInvoiceData(this.invoiceForm.value )
+    this.router.navigate(['/items'])
   }
 
 
