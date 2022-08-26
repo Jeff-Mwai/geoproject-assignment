@@ -2,19 +2,19 @@
      <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <div class="mt-5" id="htmlData">
-                   
-                    <h1 class="mb-5">INVOICE</h1>
+            <div class="col-md-8 p-5" id="htmlData">                 
+                    <h1 class="invoice">INVOICE</h1>
 
-
-                    <p>GEO-PROJECT</p>
-                    <p>33843-00200</p>
-                    <p>+254725107112</p>
-                    <p class="mb-5">jeffmwai3@gmail.com</p>
+                    <div class="company">
+                        <p>GEO-PROJECT</p>
+                        <p>33843-00200</p>
+                        <p>+25472546842</p>
+                        <p class="mb-5">geoprojectke@gmail.com</p>
+                    </div>
+                 
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 customer">
                             <p><strong>Bill To:</strong></p>
                             <p>{{allData.name}}</p>
                             <p>{{allData.address}}</p>
@@ -23,22 +23,21 @@
                 
                         </div>
                         <div class="col-md-6">
-                            <p>Invoice Number: 999002</p>
-                            <p>Invoice Date: {{todaysDate| date}}</p>
-                            <p>Payment Due: {{allData.date}}</p>
+                            <p><strong>Invoice Number:</strong> 999002</p>
+                            <p><strong>Invoice Date:</strong> {{todaysDate| date}}</p>
+                            <p><strong>Payment Due:</strong> {{allData.date | date}}</p>
                         </div>
                     </div>
-
-                      
+       
                 <div class="row">
                     <table class="table">
-                        <thead class="thead-light">
-                          <tr>
+                        <thead class="thead">
+                          <tr class="tr1">
                             
-                            <th scope="col"><strong>Item</strong></th>
-                            <th scope="col"><strong>Quantity</strong></th>
-                            <th scope="col"><strong>Price</strong></th>
-                            <th scope="col"><strong>Amount</strong></th>
+                            <th scope="col">Item</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Amount</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -48,20 +47,47 @@
                             <td>{{item.quantity}}</td>
                             <td>{{item.price}}</td>
                             <td>{{item.amount}}</td>
+                        
                           </tr>
                          
                         </tbody>
-                        <td><strong>Total: ${{grandTotal}}</strong></td>
+                       
                       </table>
                       
                 </div>
+
+                <div class="total">
+
+                    <table id="table">
+                    <thead >
+                      <tr id="tr">
+                        <th class="">Subtotal</th>
+                        <th class="">Tax</th>
+                        <th class="">Fees/discounts</th>
+                        <th class="tot">TOTAL</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbody">
+                      <tr id="tr">
+                        
+                        <td class="td">$ {{grandTotal}}</td>
+                        <td class="td">$ 0.00</td>
+                        <td class="td">$ 0.00</td>
+                        <td class="td" id="tot">$ {{grandTotal}}</td>
+                      </tr>
+                    </tbody>
+                    </table>
+
+
+                    <!-- <p>Subtotal:  ${{grandTotal}}</p> 
+                    <p>Tax: $0.00</p> 
+                    <p>Fees/discounts: $0.00</p> 
+                    <h5>Total: ${{grandTotal}}</h5>  -->
+                </div>
+                    
+             <h6>Terms and Conditions</h6>   
+             <p>Terms and conditions go here</p>
                 
-                
-            </div>
-                
-            
-        
-            
             </div>
             
             <div class="col-md-2 mt-5">

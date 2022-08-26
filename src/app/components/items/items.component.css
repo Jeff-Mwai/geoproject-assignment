@@ -1,0 +1,42 @@
+.invoice {
+    margin-bottom: 50px;
+    margin-top: 40px;
+}
+.company {
+    margin-bottom: 50px;
+}
+.total {
+   font-weight: 100;
+   padding-left: 380px;
+   margin-bottom: 50px;
+}
+.customer {
+    margin-bottom: 40px;
+}
+
+#table {
+    display: flex;
+    align-items: right;
+    justify-content: start;
+  }
+  #tbody {
+      display: flex;
+      flex-direction: row;
+  }
+  #tr {
+      display: flex;
+      flex-direction: column;
+      
+  }
+  .td {
+    padding-left: 45px;
+  }
+  .thead {
+    background-color: #F2B8C6;
+  }
+  .tr1 {
+    font-weight: 100;
+  }
+  .tot, #tot {
+    background-color: #F2B8C6;
+  }
